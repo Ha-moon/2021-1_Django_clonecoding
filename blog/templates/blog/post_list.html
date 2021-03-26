@@ -1,10 +1,16 @@
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<!--Bootstrap부트스트랩 사용! : 유명한 HTML과 CSS프레임워크로 예쁜 웹사이트를 만들 수 있음-->
+{% load static %} <!--static정적 파일 로딩 해와서 아래 css불러옴-->
 
 <html>
     <head>
         <title>Hamoon's blog</title>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!--Bootstrap부트스트랩 사용! : 유명한 HTML과 CSS프레임워크로 예쁜 웹사이트를 만들 수 있음-->
+        
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> <!--제목 폰트 바꾸기-Lobster 라는 글꼴을 가져옴-->
+
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
 
     <body>
