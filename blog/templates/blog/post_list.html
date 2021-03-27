@@ -1,40 +1,13 @@
-{% load static %} <!--static정적 파일 로딩 해와서 아래 css불러옴-->
+{% extends 'blog/base.html' %} <!--base확장 템플릿으로부터 연결-->
 
-<html>
-    <head>
-        <title>Hamoon's blog</title>
-
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <!--Bootstrap부트스트랩 사용! : 유명한 HTML과 CSS프레임워크로 예쁜 웹사이트를 만들 수 있음-->
-        
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"> <!--제목 폰트 바꾸기-Lobster 라는 글꼴을 가져옴-->
-
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-
-    <body>
-        <div class="page-header"> <!--이름지정-->
-            <h1><a href="">Hamoon's Blog</a></h1>
-        </div>
-
-        {{ posts }}
-
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                    {% for post in posts %}
-                        <div class="post">
-                            <div class="date">
-                                <p>published:{{ post.published_date }}</p>
-                            </div>
-                            <h1><a href="">{{ post.title }}</a></h1>
-                            <p>{{ post.text|linebreaksbr }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
+{% block content %} <!--base의 block에 들어가는 내용-->
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
             </div>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
