@@ -15,7 +15,9 @@
 
     <body>
         <div class="page-header"> <!--이름지정-->
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> <!--bootstrap에서 가져온 + 버튼-->
+            {% if user.is_authenticated %} <!--보안. 관리자만 수정가능하도록-->
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> <!--bootstrap에서 가져온 + 버튼-->
+            {% endif %}
             <h1><a href="">Hamoon's Blog</a></h1>
         </div>
 
