@@ -1,5 +1,4 @@
-from django.http import Http404 # 404에러 일으키기
-from django.shortcuts import render # 아래 두 import 단축하기
+from django.shortcuts import get_object_or_404, render #뷰단축 + 404에러
 
 from django.http import HttpResponse
 from django.template import loader
@@ -14,10 +13,7 @@ def index(request):
 
 
 def detail(request, question_id):
-    try:
-        question = Question.objects.get(pk=question_id)
-    except Question.DoesNotExist:
-        raise Http404("Question does not exist") #404
+    question = get_object_or_404(Question, pk=question_id) #뷰단축 + 404에러
     return render(request, 'polls/detail.html', {'question': question})
 
 def results(request, question_id):
