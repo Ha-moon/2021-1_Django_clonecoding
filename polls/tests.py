@@ -15,4 +15,4 @@ class QuestionModelTests(TestCase):
         """
         time = timezone.now() + datetime.timedelta(days=30) #  pub_date필드가 30일 이후(미래)인
         future_question = Question(pub_date=time) # Question 인스턴스를 생성
-        self.assertIs(future_question.was_published_recently(), False)
+        self.assertIs(future_question.was_published_recently(), False) # pub_date가 미래에 있다면 False를 반환해야함.
