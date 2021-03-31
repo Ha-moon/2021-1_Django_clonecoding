@@ -1,0 +1,11 @@
+<!--이 화면이 아닌,base_site.html에서  바꿔야 변경됨.
+본 화면은 복사본.-->
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Hamoon's Polls Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
