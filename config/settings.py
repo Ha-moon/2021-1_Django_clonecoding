@@ -56,7 +56,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'layout')],
+        'DIRS': [BASE_DIR / 'templates'], # layout안되서 변경
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
