@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -31,7 +31,7 @@ class PhotoUpdate(UpdateView):
     template_name_suffix = '_update'
     success_url = '/'
 
-class PhotoDelete(DetailView):
+class PhotoDelete(DeleteView):
     model = Photo
     template_name_suffix = '_delete'
     success_url = '/'
