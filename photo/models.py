@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Photo(models.Model):
@@ -14,3 +15,7 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-created']
+
+
+    def get_absolute_url(self): # 상세 페이지로 이동하도록 absolute_url설정
+        return reverse('photo:detail', args=[self.id])
