@@ -4,8 +4,11 @@ from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Photo
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.contrib import messages
+
+from django.views.generic.base import View
+from urllib.parse import urlparse
 
 class PhotoList(ListView):
     model = Photo
@@ -57,3 +60,21 @@ class PhotoDelete(DeleteView):
 class PhotoDetail(DetailView):
     model = Photo
     template_name_suffix = '_detail'
+
+
+class PhotoLike(View):
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated: #로그인확인
+            return HttpResponseForbidden()
+        else:
+            if 'photo_id' in kwargs:
+                photo_id = kwargs['photo_id']
+                photo = Photo.objects.get(pk=photo_id)
+                user = request.user
+                if user in photo.like.all():
+                    photo.like.remove(user)
+                else:
+                    photo.like.add(user)
+            referer_url = request.META.get('HTTP_REFERER')
+            path = urlparse(referer_url).path
+            return HttpResponseRedirect(path)
