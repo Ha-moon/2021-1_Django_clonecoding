@@ -79,7 +79,7 @@ class PhotoLike(View):
             path = urlparse(referer_url).path
             return HttpResponseRedirect(path)
 
-class Photofavorite(View):
+class PhotoFavorite(View):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated: #로그인확인
             return HttpResponseForbidden()
@@ -91,5 +91,5 @@ class Photofavorite(View):
                 if user in photo.favorite.all():
                     photo.favorite.remove(user)
                 else:
-                    photo.like.add(user)
+                    photo.favorite.add(user)
             return HttpResponseRedirect('/')
