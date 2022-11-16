@@ -22,18 +22,18 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <h2><a class="nav-link" href="{% url 'photo:index' %}"> Home <span class="sr-only">(current)</span></a></h2>
+                  <a class="nav-link" href="{% url 'photo:index' %}"> Home <span class="sr-only">(current)</span></a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <h2><a class="nav-link" href="{% url 'photo:create' %}">동영상 올리기<span class="sr-only">(current)</span></a></h2>
+                  <a class="nav-link" href="{% url 'photo:create' %}">동영상 올리기<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <h2><a class="nav-link" href="{% url 'accounts:logout' %}"> Logout <span class="sr-only">(current)</span></a></h2>
+                  <a class="nav-link" href="{% url 'accounts:logout' %}"> Logout <span class="sr-only">(current)</span></a>
                 </li>
                 {% else %}
                 <li class="nav-item active">
-                  <h2><a class="nav-link" href="{% url 'accounts:login' %}"> Login <span class="sr-only">(current)</span></a></h2>
+                  <a class="nav-link" href="{% url 'accounts:login' %}"> Login <span class="sr-only">(current)</span></a>
                 </li>
                 {% endif %}
               </ul>
